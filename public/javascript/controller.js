@@ -14,8 +14,9 @@ visualApp.directive("tabsData", function($rootScope, $http) {
     controller: function() {
       $http.get('/tabs').success(function(data) {
         $rootScope.dashboards = data.dashboards;
+        console.log(data);
         $rootScope.currentTab = data.dashboards[0].tabId;
-
+        console.log(data.dashboards[0]);
         $rootScope.onClickTab = function (tab) {
             $rootScope.currentTab = tab.tabId;
         }
@@ -61,7 +62,7 @@ visualApp.directive("dashboardData", function($rootScope, $http, $log) {
                 $scope.url = w.url;
                 $scope.comments = w.comments;
 
-                var containerWidth = $(".container").clientWidth;
+                //var containerWidth = $(".container").clientWidth;
                 var widgetWidth = $("#"+widgetContainer).width();
 
                 if(widgetWidth > 100) {
